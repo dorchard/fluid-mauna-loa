@@ -4,6 +4,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 env:
   FLUID_SCRIPT: node_modules/@explorable-viz/fluid/script
 
