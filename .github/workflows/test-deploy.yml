@@ -26,6 +26,10 @@ jobs:
       run: |
         yarn install
         npx install-website article
+        cp fluid/*.fld website/article/static/fluid/
+        cp dataset/co2_mm_mlo.json website/article/static/dataset/
+        mkdir -p website/article/src/routes/co2
+        cp src/routes/co2/+page.svelte website/article/src/routes/co2/
         cd website/article
         yarn install
     - name: test
@@ -46,9 +50,13 @@ jobs:
       run: |
         yarn install
         npx install-website article
+        cp fluid/*.fld website/article/static/fluid/
+        cp dataset/co2_mm_mlo.json website/article/static/dataset/
+        mkdir -p website/article/src/routes/co2
+        cp src/routes/co2/+page.svelte website/article/src/routes/co2/
         cd website/article
         yarn install
-        BASE_PATH=/fluid-article yarn build
+        BASE_PATH=/fluid-mauna-loa yarn build
     - name: gh-pages
       uses: peaceiris/actions-gh-pages@v3
       with:
@@ -59,4 +67,4 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        ./$FLUID_SCRIPT/util/test-deployed-website.sh https://explorable-viz.github.io/fluid-article website/article
+        ./$FLUID_SCRIPT/util/test-deployed-website.sh https://dorchard.github.io/fluid-mauna-loa website/article
