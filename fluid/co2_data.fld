@@ -1,1 +1,0 @@
-def co2: load_json("../dataset/co2_mm_mlo.json")
