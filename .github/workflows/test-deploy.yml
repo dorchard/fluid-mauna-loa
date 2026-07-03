@@ -33,7 +33,7 @@ jobs:
         cd website/article
         yarn test
 
-  pages-build-deployment:
+  deploy-website:
     runs-on: ubuntu-22.04
     needs: test
     if: github.ref == 'refs/heads/main'
