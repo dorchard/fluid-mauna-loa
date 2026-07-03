@@ -1,0 +1,12 @@
+import co2_data
+
+def raw_series: [{ x: row.year + (row.month - 1) / 12, y: row.ppm } for row in co2]
+
+LineChart({
+   size: { width: 600, height: 330 },
+   tickLabels: { x: Rotated, y: Default },
+   caption: "Mauna Loa CO2 concentration",
+   plots: [
+      LinePlot({ name: "Monthly CO2", points: raw_series })
+   ]
+})
