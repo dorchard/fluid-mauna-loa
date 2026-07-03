@@ -1,0 +1,21 @@
+{
+  "name": "@explorable-viz/fluid-article",
+  "version": "0.2",
+  "private": true,
+  "description": "Template for Fluid article websites.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/explorable-viz/fluid-article.git"
+  },
+  "author": "Fluid Contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/explorable-viz/fluid/issues"
+  },
+  "dependencies": {
+    "@explorable-viz/fluid": "0.12.11"
+  },
+  "devDependencies": {
+    "puppeteer": "23.11.1"
+  }
+}
