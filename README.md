@@ -80,7 +80,7 @@ LineChart({
 })
 ```
 
-Key Fluid syntax rules (learned from this project):
+Key Fluid syntax rules:
 - Definitions use `def name:` or `def name(args):`, **not** `let ... in`
 - List comprehensions use `[expr for x in list if cond]`, **not** `| x <- list, cond`
 - Range syntax is `[0 .. n - 1]`, **not** `range(0, n)`
