@@ -12,8 +12,6 @@ def movingAvg(ys, window):
   def snd_ys:
     map(lambda r: r.y, ys)
   [{ x: nth(i, ys).x, y: (sum([nthPad(n, snd_ys) for n in [i - window .. i + window]]) / (1 + 2 * window)) } for i in [0 .. length(ys) - 1]]
-def movingAvg_(rs, window):
-  zip_with(lambda x, y: { x: x, y: y }, map(lambda r: r.x, rs), movingAvg(map(lambda r: r.y, rs), window))
 
 LineChart({
    size: { width: 600, height: 330 },
