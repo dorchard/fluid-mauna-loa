@@ -1,6 +1,19 @@
 import co2_data
 
-def raw_series: [{ x: row.year + (row.month - 1) / 12, y: row.ppm } for row in co2]
+def perforate(series,k):
+  [nth(i*k, series) for i in [0 .. (length(series) - 1) |quot| k]]
+
+def raw_series: 
+  [{ x: row.year + (row.month - 1) / 12, y: row.ppm } for row in perforate(co2,4)]
+
+def nthPad(n, xs):
+  nth(min(max(n, 0), length(xs) - 1), xs)
+def movingAvg(ys, window):
+  def snd_ys:
+    map(lambda r: r.y, ys)
+  [{ x: nth(i, ys).x, y: (sum([nthPad(n, snd_ys) for n in [i - window .. i + window]]) / (1 + 2 * window)) } for i in [0 .. length(ys) - 1]]
+def movingAvg_(rs, window):
+  zip_with(lambda x, y: { x: x, y: y }, map(lambda r: r.x, rs), movingAvg(map(lambda r: r.y, rs), window))
 
 LineChart({
    size: { width: 600, height: 330 },
@@ -8,5 +21,6 @@ LineChart({
    caption: "Mauna Loa CO2 concentration",
    plots: [
       LinePlot({ name: "Monthly CO2", points: raw_series })
+    , LinePlot({name: "12-month average", points: movingAvg(raw_series, 12)})
    ]
 })
